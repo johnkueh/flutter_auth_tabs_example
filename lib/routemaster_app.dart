@@ -6,6 +6,7 @@ import 'package:flutter_auth_tabs_example/screens/loading_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/login_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/register_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/settings_screen.dart';
+import 'package:flutter_auth_tabs_example/screens/task_detail_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/tasks_screen.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:provider/provider.dart';
@@ -41,9 +42,12 @@ class _RoutemasterAppState extends State<RoutemasterApp> {
         return Redirect("/");
       },
       routes: {
-        '/': (_) =>
-            TabPage(child: HomeScreen(), paths: ['/tasks', '/settings']),
+        '/': (_) => TabPage(
+            child: HomeScreen(),
+            paths: ['/tasks', '/settings'],
+            pageBuilder: (child) => MaterialPage(child: child)),
         "/tasks": (_) => MaterialPage(child: TasksScreen()),
+        "/tasks/1": (_) => MaterialPage(child: TaskDetailScreen()),
         "/settings": (_) => MaterialPage(child: SettingsScreen())
         // Regular app routes
       },

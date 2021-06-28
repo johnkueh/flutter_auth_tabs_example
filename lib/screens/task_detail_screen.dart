@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_colors.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_fonts.dart';
-import 'package:flutter_auth_tabs_example/widgets/primary_button.dart';
-import 'package:routemaster/routemaster.dart';
 
-class TasksScreen extends StatefulWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+class TaskDetailScreen extends StatefulWidget {
+  const TaskDetailScreen({Key? key}) : super(key: key);
 
   @override
-  _TasksScreenState createState() => _TasksScreenState();
+  _TaskDetailScreenState createState() => _TaskDetailScreenState();
 }
 
-class _TasksScreenState extends State<TasksScreen> {
+class _TaskDetailScreenState extends State<TaskDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Tabs Example",
+        iconTheme: IconThemeData(color: ThemeColors.primaryBlue[600]),
+        title: Text("Task Detail",
             style: ThemeFonts.headingFive
                 .copyWith(color: ThemeColors.neutralBlack)),
         backgroundColor: Colors.white,
@@ -29,19 +28,10 @@ class _TasksScreenState extends State<TasksScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              "Page 1",
+              "Page 1 / Task detail",
               textAlign: TextAlign.center,
               style: ThemeFonts.headingThree,
             ),
-            SizedBox(
-              height: 30,
-            ),
-            PrimaryButton(
-              label: "Go to detail",
-              onPressed: () async {
-                Routemaster.of(context).push('1');
-              },
-            )
           ],
         ),
       ),
