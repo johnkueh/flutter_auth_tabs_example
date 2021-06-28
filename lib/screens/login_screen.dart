@@ -5,7 +5,7 @@ import 'package:flutter_auth_tabs_example/theme/theme_colors.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_fonts.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_input_decoration.dart';
 import 'package:flutter_auth_tabs_example/widgets/button.dart';
-import 'package:vrouter/vrouter.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           actions: [
             GestureDetector(
               onTap: () {
-                context.vRouter.pushReplacement('/register');
+                Routemaster.of(context).push('/register');
               },
               child: Container(
                 padding: const EdgeInsets.all(10.0),
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   password: passwordController.text.trim(),
                                 );
                         if (errorMessage == null) {
-                          context.vRouter.pushReplacement("/tabs/tasks");
+                          // context.vRouter.pushReplacement("/tabs/tasks");
                         } else {
                           showDialog(
                               context: context,

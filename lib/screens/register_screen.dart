@@ -3,7 +3,7 @@ import 'package:flutter_auth_tabs_example/theme/theme_colors.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_fonts.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_input_decoration.dart';
 import 'package:flutter_auth_tabs_example/widgets/button.dart';
-import 'package:vrouter/vrouter.dart';
+import 'package:routemaster/routemaster.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
           actions: [
             GestureDetector(
               onTap: () {
-                context.vRouter.pushReplacement('/login');
+                Routemaster.of(context).push('/');
               },
               child: Container(
                 padding: const EdgeInsets.all(10.0),

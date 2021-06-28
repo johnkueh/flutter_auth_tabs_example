@@ -4,7 +4,6 @@ import 'package:flutter_auth_tabs_example/theme/theme_colors.dart';
 import 'package:flutter_auth_tabs_example/theme/theme_fonts.dart';
 import 'package:flutter_auth_tabs_example/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
-import 'package:vrouter/vrouter.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -45,7 +44,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: "Logout",
                 onPressed: () async {
                   await context.read<AuthenticationProvider>().signOut();
-                  context.vRouter.pushReplacement("/login");
                 },
               );
             }),
