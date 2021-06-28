@@ -1,12 +1,29 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 enum AuthState { Unknown, Unauthenticated, Authenticated }
 
-class AuthenticationProvider with ChangeNotifier {
+class AuthenticationProvider extends ChangeNotifier {
+  late StreamSubscription<User?> _subscription;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  AuthenticationProvider();
+  AuthenticationProvider() {
+    this._subscription = FirebaseAuth.instance.idTokenChanges().listen((user) {
+      if (user != null) {
+        setAuthState(AuthState.Authenticated);
+      } else {
+        setAuthState(AuthState.Unauthenticated);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _subscription.cancel();
+  }
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;

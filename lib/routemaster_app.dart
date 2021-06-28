@@ -6,7 +6,6 @@ import 'package:flutter_auth_tabs_example/screens/loading_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/login_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/register_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/settings_screen.dart';
-import 'package:flutter_auth_tabs_example/screens/tasks_screen.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:provider/provider.dart';
 
@@ -18,23 +17,6 @@ class RoutemasterApp extends StatefulWidget {
 }
 
 class _RoutemasterAppState extends State<RoutemasterApp> {
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      final authProvider = context.read<AuthenticationProvider>();
-
-      FirebaseAuth.instance.idTokenChanges().listen((user) {
-        if (user != null) {
-          authProvider.setAuthState(AuthState.Authenticated);
-        } else {
-          authProvider.setAuthState(AuthState.Unauthenticated);
-        }
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final authState = context.watch<AuthenticationProvider>().authState;
