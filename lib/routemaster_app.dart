@@ -21,8 +21,6 @@ class _RoutemasterAppState extends State<RoutemasterApp> {
   Widget build(BuildContext context) {
     final authState = context.watch<AuthenticationProvider>().authState;
 
-    print(authState);
-
     final loadingMap = RouteMap(
       routes: {
         '/': (_) => MaterialPage(child: LoadingScreen()),
@@ -33,6 +31,7 @@ class _RoutemasterAppState extends State<RoutemasterApp> {
       routes: {
         '/': (_) => MaterialPage(child: LoginScreen()),
         '/register': (_) => MaterialPage(child: RegisterScreen()),
+        '/login': (_) => Redirect('/'),
       },
     );
 
