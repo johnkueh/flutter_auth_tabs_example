@@ -22,9 +22,10 @@ class BottomTabBar extends StatelessWidget {
           path: '/tabs/settings'),
     ];
 
+    print(context.vRouter.path);
+
     return BottomNavigationBar(
-      currentIndex:
-          tabItems.indexWhere((item) => item.path == context.vRouter.path),
+      currentIndex: 0,
       items: tabItems.map((item) {
         return BottomNavigationBarItem(label: item.label, icon: item.icon);
       }).toList(),

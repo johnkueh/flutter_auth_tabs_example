@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_tabs_example/navigation/bottom_tab_bar.dart';
 import 'package:flutter_auth_tabs_example/screens/settings_screen.dart';
+import 'package:flutter_auth_tabs_example/screens/task_detail_screen.dart';
 import 'package:vrouter/vrouter.dart';
 import 'package:flutter_auth_tabs_example/screens/login_screen.dart';
 import 'package:flutter_auth_tabs_example/screens/register_screen.dart';
@@ -87,6 +88,9 @@ class _VRouterAppState extends State<VRouterApp> {
                       VWidget(
                           path: 'tasks',
                           widget: TasksScreen(),
+                          stackedRoutes: [
+                            VWidget(path: ':taskId', widget: TaskDetailScreen())
+                          ],
                           transitionDuration: Duration(milliseconds: 0)),
                       VWidget(
                         path: 'settings',
